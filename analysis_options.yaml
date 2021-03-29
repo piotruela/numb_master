@@ -1,0 +1,25 @@
+linter:
+  rules:
+    - prefer_single_quotes
+    - always_use_package_imports
+    - avoid_relative_lib_imports
+    - cancel_subscriptions
+    - annotate_overrides
+    - valid_regexps
+    - always_require_non_null_named_parameters
+    - file_names
+    - flutter_style_todos
+    - prefer_final_fields
+    - prefer_is_empty
+    - sized_box_for_whitespace
+    - sort_pub_dependencies
+    - package_names
+    - use_full_hex_values_for_flutter_colors
+    - unnecessary_this
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_lambdas
+    - unnecessary_getters_setters
+    - unnecessary_const
+    - unnecessary_brace_in_string_interps
+    - unawaited_futures
+    - sort_child_properties_last

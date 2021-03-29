@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "769221715868",
+    "project_id": "numb-master",
+    "storage_bucket": "numb-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769221715868:android:7acb1e1f118ca52dd78a59",
+        "android_client_info": {
+          "package_name": "piotruela.numb_master"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769221715868-n22ho8lg3uf055sad0chn4rrmdv38tst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIq8MFfPSUU5cRGp1DB2Ia1LSxwVZLWek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769221715868-n22ho8lg3uf055sad0chn4rrmdv38tst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
