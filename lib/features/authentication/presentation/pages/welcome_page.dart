@@ -23,15 +23,10 @@ class WelcomePage extends StatelessWidget {
           ),
           RichText(
               text: TextSpan(
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w300),
                   children: <TextSpan>[
                 TextSpan(text: localeBundle.welcomeTextPartOne),
-                TextSpan(
-                    text: localeBundle.welcomeTextPartTwo,
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: localeBundle.welcomeTextPartTwo, style: TextStyle(fontWeight: FontWeight.bold)),
               ])),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -41,12 +36,10 @@ class WelcomePage extends StatelessWidget {
                 _NavigateToRegisterButton(localeBundle: localeBundle),
                 Text(
                   localeBundle.or,
-                  style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white),
                 ),
                 _NavigateToLoginButton(localeBundle: localeBundle)
+                // TODO(piotruela): Delete
               ],
             ),
           )
@@ -59,8 +52,7 @@ class WelcomePage extends StatelessWidget {
 class _NavigateToRegisterButton extends StatelessWidget {
   final LocaleBundle localeBundle;
 
-  const _NavigateToRegisterButton({Key? key, required this.localeBundle})
-      : super(key: key);
+  const _NavigateToRegisterButton({Key? key, required this.localeBundle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +66,11 @@ class _NavigateToRegisterButton extends StatelessWidget {
 class _NavigateToLoginButton extends StatelessWidget {
   final LocaleBundle localeBundle;
 
-  const _NavigateToLoginButton({Key? key, required this.localeBundle})
-      : super(key: key);
+  const _NavigateToLoginButton({Key? key, required this.localeBundle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final MaterialStateProperty<Color> _buttonColor =
-        MaterialStateProperty.all<Color>(Theme.of(context).buttonColor);
+    final MaterialStateProperty<Color> _buttonColor = MaterialStateProperty.all<Color>(Theme.of(context).buttonColor);
 
     return ElevatedButton(
       onPressed: () => {},
