@@ -19,7 +19,10 @@ class Localization {
 
 class LocalizationDelegate extends LocalizationsDelegate<Localization> {
   static const List<String> supportedLanguages = ['en', 'pl'];
-  static const List<Locale> supportedLocales = [Locale('en', 'pl')];
+  static const List<Locale> supportedLocales = [
+    Locale('en', 'US'),
+    Locale('pl', '')
+  ];
 
   const LocalizationDelegate();
 
