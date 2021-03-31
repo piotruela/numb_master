@@ -38,11 +38,14 @@ class RegisterPage extends StatelessWidget {
           ),
           InputField(
               labelText: localeBundle.repeatPassword,
-              controller: emailController),
+              controller: repeatPasswordController),
           Expanded(flex: 11, child: SizedBox.shrink()),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: SizedBox(width: double.infinity, child: SubmitButton()),
+            child: SizedBox(
+              width: double.infinity,
+              child: SubmitButton(buttonLabel: localeBundle.register),
+            ),
           ),
           Expanded(flex: 1, child: SizedBox.shrink()),
           FooterText(
