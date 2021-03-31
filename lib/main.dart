@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:numb_master/core/config/asset_config.dart';
 import 'package:numb_master/core/config/localization/localization.dart';
 import 'package:numb_master/core/config/navigation/router.gr.dart';
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.themeData,
       localizationsDelegates: [
         const LocalizationDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
       ],
       supportedLocales: LocalizationDelegate.supportedLocales,
     );
