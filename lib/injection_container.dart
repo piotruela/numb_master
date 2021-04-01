@@ -6,3 +6,7 @@ final locator = GetIt.instance;
 void setup() {
   locator.registerSingleton<AssetConfig>(AssetConfig());
 }
+
+void setupForTests() {
+  locator.registerSingleton<AssetConfig>(AssetConfig());
+}

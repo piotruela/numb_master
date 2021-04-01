@@ -4,11 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:numb_master/core/config/localization/locale_bundle.dart';
 import 'package:numb_master/core/config/localization/locale_bundle_en.dart';
 import 'package:numb_master/features/authentication/presentation/pages/welcome_page.dart';
+import 'package:numb_master/injection_container.dart';
 
 import '../../../../core/test_widget.dart';
 
 void main() {
   final LocaleBundle localeBundle = LocaleBundleEn();
+  setupForTests();
 
   testWidgets('should render with all widgets and texts', (WidgetTester tester) async {
     //act
