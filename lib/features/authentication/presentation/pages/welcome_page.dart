@@ -5,9 +5,10 @@ import 'package:numb_master/core/config/asset_config.dart';
 import 'package:numb_master/core/config/localization/locale_bundle.dart';
 import 'package:numb_master/core/config/localization/localization.dart';
 import 'package:numb_master/core/config/navigation/router.gr.dart';
+import 'package:numb_master/injection_container.dart';
 
 class WelcomePage extends StatelessWidget {
-  final AssetConfig assetConfig = AssetConfig();
+  final AssetConfig assetConfig = locator.get<AssetConfig>();
 
   @override
   Widget build(BuildContext context) {
