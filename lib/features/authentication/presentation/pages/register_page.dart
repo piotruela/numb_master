@@ -7,53 +7,49 @@ import 'package:numb_master/features/authentication/presentation/widgets/page_he
 import 'package:numb_master/features/authentication/presentation/widgets/submit_button.dart';
 
 class RegisterPage extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController repeatPasswordController =
-      TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _repeatPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final LocaleBundle localeBundle = Localization.of(context)!.bundle!;
+    final LocaleBundle _localeBundle = Localization.of(context)!.bundle!;
     return Scaffold(
-      body: Column(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: PageHeader(
-              title: localeBundle.registerPageTitle,
-              subtitle: localeBundle.registerPageSubtitle,
+      body: Center(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: PageHeader(
+                title: _localeBundle.registerPageTitle,
+                subtitle: _localeBundle.registerPageSubtitle,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 56.0,
-          ),
-          InputField(
-              labelText: localeBundle.email, controller: emailController),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 21.0),
-            child: InputField(
-                labelText: localeBundle.password,
-                controller: passwordController),
-          ),
-          InputField(
-              labelText: localeBundle.repeatPassword,
-              controller: repeatPasswordController),
-          Expanded(flex: 11, child: SizedBox.shrink()),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: SubmitButton(buttonLabel: localeBundle.register),
+            SizedBox(
+              height: 56.0,
             ),
-          ),
-          Expanded(flex: 1, child: SizedBox.shrink()),
-          FooterText(
-              questionText: localeBundle.alreadyAMemberQuestion,
-              clickableText: localeBundle.logIn,
-              onTextClicked: () => {}),
-          Expanded(flex: 7, child: SizedBox.shrink()),
-        ],
+            InputField(labelText: _localeBundle.email, controller: _emailController),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 21.0),
+              child: InputField(labelText: _localeBundle.password, controller: _passwordController),
+            ),
+            InputField(labelText: _localeBundle.repeatPassword, controller: _repeatPasswordController),
+            Expanded(flex: 11, child: SizedBox.shrink()),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: SubmitButton(buttonLabel: _localeBundle.register),
+              ),
+            ),
+            Expanded(flex: 1, child: SizedBox.shrink()),
+            FooterText(
+                questionText: _localeBundle.alreadyAMemberQuestion,
+                clickableText: _localeBundle.logIn,
+                onTextClicked: () => {}),
+            Expanded(flex: 7, child: SizedBox.shrink()),
+          ],
+        ),
       ),
     );
   }
