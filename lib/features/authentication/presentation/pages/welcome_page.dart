@@ -22,37 +22,69 @@ class WelcomePage extends StatelessWidget {
             width: 300,
             child: SvgPicture.asset(assetConfig.graduationSvg),
           ),
-          RichText(
-              text: TextSpan(
-                  style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w300),
-                  children: <TextSpan>[
-                TextSpan(text: localeBundle.welcomeTextPartOne),
-                TextSpan(text: localeBundle.welcomeTextPartTwo, style: TextStyle(fontWeight: FontWeight.bold)),
-              ])),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _NavigateToRegisterButton(localeBundle: localeBundle),
-                Text(
-                  localeBundle.or,
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white),
-                ),
-                _NavigateToLoginButton(localeBundle: localeBundle)
-              ],
-            ),
-          )
+          _TextSection(localeBundle: localeBundle),
+          _BottomSection(localeBundle: localeBundle)
         ],
       ),
     );
   }
 }
 
-class _NavigateToRegisterButton extends StatelessWidget {
+class _TextSection extends StatelessWidget {
   final LocaleBundle localeBundle;
 
-  const _NavigateToRegisterButton({Key? key, required this.localeBundle}) : super(key: key);
+  const _TextSection({required this.localeBundle});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w300),
+        children: <TextSpan>[
+          TextSpan(text: localeBundle.welcomeTextPartOne),
+          TextSpan(
+            text: localeBundle.welcomeTextPartTwo,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+class _BottomSection extends StatelessWidget {
+  final LocaleBundle localeBundle;
+
+  const _BottomSection({required this.localeBundle});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _NavigateToRegisterPageButton(localeBundle: localeBundle),
+          Text(
+            localeBundle.or,
+            style: const TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
+          ),
+          _NavigateToLoginPageButton(localeBundle: localeBundle)
+        ],
+      ),
+    );
+  }
+}
+
+class _NavigateToRegisterPageButton extends StatelessWidget {
+  final LocaleBundle localeBundle;
+
+  const _NavigateToRegisterPageButton({required this.localeBundle});
 
   @override
   Widget build(BuildContext context) {
@@ -63,26 +95,29 @@ class _NavigateToRegisterButton extends StatelessWidget {
   }
 }
 
-class _NavigateToLoginButton extends StatelessWidget {
+class _NavigateToLoginPageButton extends StatelessWidget {
   final LocaleBundle localeBundle;
 
-  const _NavigateToLoginButton({Key? key, required this.localeBundle}) : super(key: key);
+  const _NavigateToLoginPageButton({required this.localeBundle});
 
   @override
   Widget build(BuildContext context) {
-    final MaterialStateProperty<Color> _buttonColor = MaterialStateProperty.all<Color>(Theme.of(context).buttonColor);
-
     return ElevatedButton(
       onPressed: () => {},
-      style: ButtonStyle(
-          foregroundColor: _buttonColor,
-          shadowColor: _buttonColor,
-          backgroundColor: _buttonColor,
-          overlayColor: _buttonColor),
+      style: _buildButtonStyle(context),
       child: Text(
         localeBundle.login,
-        style: TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black),
       ),
     );
+  }
+
+  ButtonStyle _buildButtonStyle(BuildContext context) {
+    final _buttonColor = MaterialStateProperty.all<Color>(Theme.of(context).buttonColor);
+    return ButtonStyle(
+        foregroundColor: _buttonColor,
+        shadowColor: _buttonColor,
+        backgroundColor: _buttonColor,
+        overlayColor: _buttonColor);
   }
 }

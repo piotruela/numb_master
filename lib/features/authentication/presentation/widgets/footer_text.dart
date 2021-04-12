@@ -19,18 +19,24 @@ class FooterText extends StatelessWidget {
         children: [
           TextSpan(
             text: questionText,
-            style: TextStyle(fontSize: 18.0, color: Colors.black),
+            style: const TextStyle(fontSize: 18.0, color: Colors.black),
           ),
-          TextSpan(
-              text: clickableText,
-              style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  fontSize: 18.0,
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold),
-              recognizer: TapGestureRecognizer()..onTap = onTextClicked),
+          _buildClickableText(context),
         ],
       ),
+    );
+  }
+
+  TextSpan _buildClickableText(BuildContext context) {
+    return TextSpan(
+      text: clickableText,
+      style: TextStyle(
+        decoration: TextDecoration.underline,
+        fontSize: 18.0,
+        color: Theme.of(context).primaryColor,
+        fontWeight: FontWeight.bold,
+      ),
+      recognizer: TapGestureRecognizer()..onTap = onTextClicked,
     );
   }
 }

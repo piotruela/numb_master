@@ -4,7 +4,11 @@ class PageHeader extends StatelessWidget {
   final String? title;
   final String? subtitle;
 
-  const PageHeader({Key? key, this.title, this.subtitle}) : super(key: key);
+  const PageHeader({
+    Key? key,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +24,10 @@ class PageHeader extends StatelessWidget {
           Text(
             subtitle!,
             style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).unselectedWidgetColor),
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).unselectedWidgetColor,
+            ),
           )
         ],
       ),

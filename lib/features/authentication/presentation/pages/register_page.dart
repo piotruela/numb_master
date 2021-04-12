@@ -25,9 +25,7 @@ class RegisterPage extends StatelessWidget {
                 subtitle: _localeBundle.registerPageSubtitle,
               ),
             ),
-            SizedBox(
-              height: 56.0,
-            ),
+            SizedBox(height: 56.0),
             InputField(labelText: _localeBundle.email, controller: _emailController),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 21.0),
