@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:numb_master/core/config/localization/localization.dart';
 import 'package:numb_master/core/config/navigation/router.gr.dart';
 import 'package:numb_master/core/config/theme_config.dart';
+import 'package:numb_master/features/authentication/presentation/bloc/registration/registration_bloc.dart';
 import 'package:numb_master/injection_container.dart' as locator;
 
 void main() async {
@@ -19,16 +21,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      routerDelegate: _appRouter.delegate(),
-      theme: AppTheme.themeData,
-      localizationsDelegates: [
-        const LocalizationDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => locator.locator<RegistrationBloc>()),
       ],
-      supportedLocales: LocalizationDelegate.supportedLocales,
+      child: MaterialApp.router(
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _appRouter.delegate(),
+        theme: AppTheme.themeData,
+        localizationsDelegates: [
+          const LocalizationDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate
+        ],
+        supportedLocales: LocalizationDelegate.supportedLocales,
+      ),
     );
   }
 }

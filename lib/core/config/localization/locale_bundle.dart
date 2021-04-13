@@ -22,4 +22,6 @@ abstract class LocaleBundle {
   String get alreadyAMemberQuestion;
 
   String get logIn;
+
+  String get invalidFieldValue;
 }

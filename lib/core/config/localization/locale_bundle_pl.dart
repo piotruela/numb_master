@@ -37,4 +37,7 @@ class LocaleBundlePl extends LocaleBundle {
 
   @override
   String get logIn => 'Zaloguj się';
+
+  @override
+  String get invalidFieldValue => 'Błędna wartość pola';
 }

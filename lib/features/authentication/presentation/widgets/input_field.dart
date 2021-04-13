@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class InputField extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   const InputField({
     Key? key,
     required this.labelText,
     required this.controller,
+    required this.validator,
   }) : super(key: key);
 
   @override
@@ -16,11 +18,14 @@ class InputField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: TextFormField(
         controller: controller,
+        validator: validator,
         decoration: InputDecoration(
           labelText: labelText,
           alignLabelWithHint: false,
           focusedBorder: _buildBorderStyle(context, Theme.of(context).primaryColor),
           enabledBorder: _buildBorderStyle(context, Theme.of(context).unselectedWidgetColor),
+          errorBorder: _buildBorderStyle(context, Theme.of(context).errorColor),
+          focusedErrorBorder: _buildBorderStyle(context, Theme.of(context).errorColor),
         ),
       ),
     );

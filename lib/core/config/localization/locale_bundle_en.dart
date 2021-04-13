@@ -37,4 +37,7 @@ class LocaleBundleEn extends LocaleBundle {
 
   @override
   String get logIn => 'Log in';
+
+  @override
+  String get invalidFieldValue => 'Invalid field value';
 }
