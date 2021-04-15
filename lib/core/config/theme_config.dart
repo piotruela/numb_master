@@ -5,6 +5,7 @@ class AppTheme {
     return ThemeData(
       primaryColor: Color(0xFF747FE8),
       buttonColor: Color(0xFFFDDC77),
+      errorColor: Color(0xFFAD1616),
       unselectedWidgetColor: Color(0xFFBDBDBD),
       fontFamily: 'Roboto',
       elevatedButtonTheme: ElevatedButtonThemeData(

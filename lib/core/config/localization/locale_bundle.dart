@@ -22,4 +22,16 @@ abstract class LocaleBundle {
   String get alreadyAMemberQuestion;
 
   String get logIn;
+
+  String get invalidFieldValue;
+
+  String get loginPageTitle;
+
+  String get loginPageSubtitle;
+
+  String get loginWithFacebook;
+
+  String get youDontHaveAnAccountQuestion;
+
+  String get signUp;
 }

@@ -37,4 +37,22 @@ class LocaleBundleEn extends LocaleBundle {
 
   @override
   String get logIn => 'Log in';
+
+  @override
+  String get invalidFieldValue => 'Invalid field value';
+
+  @override
+  String get loginPageTitle => 'Welcome back,';
+
+  @override
+  String get loginPageSubtitle => 'Login with your email and password';
+
+  @override
+  String get loginWithFacebook => 'Log in with Facebook';
+
+  @override
+  String get youDontHaveAnAccountQuestion => "You don't have an account?";
+
+  @override
+  String get signUp => 'Sign up';
 }
