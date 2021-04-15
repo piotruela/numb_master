@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:numb_master/core/config/localization/locale_bundle.dart';
 import 'package:numb_master/core/config/localization/locale_bundle_en.dart';
-import 'package:numb_master/features/authentication/presentation/pages/register_page.dart';
+import 'package:numb_master/features/authentication/presentation/pages/registration_page.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/footer_text.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/input_field.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/page_header.dart';
@@ -14,7 +14,7 @@ void main() {
 
   testWidgets('should render with all necessary widgets and texts', (WidgetTester tester) async {
     //act
-    await tester.pumpWidget(TestWidget(child: RegisterPage()));
+    await tester.pumpWidget(TestWidget(child: RegistrationPage()));
 
     //assert
     expect(find.widgetWithText(PageHeader, localeBundle.registerPageTitle), findsOneWidget);
@@ -35,7 +35,7 @@ void main() {
     final String passwordInput = 'Password input';
     final String repeatPasswordInput = 'Repeat password input';
 
-    await tester.pumpWidget(TestWidget(child: RegisterPage()));
+    await tester.pumpWidget(TestWidget(child: RegistrationPage()));
     await tester.pumpAndSettle();
 
     expect(find.text(emailInput), findsNothing);

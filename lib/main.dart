@@ -5,7 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:numb_master/core/config/localization/localization.dart';
 import 'package:numb_master/core/config/navigation/router.gr.dart';
 import 'package:numb_master/core/config/theme_config.dart';
-import 'package:numb_master/features/authentication/presentation/bloc/registration/registration_bloc.dart';
+import 'package:numb_master/features/authentication/presentation/bloc/authentication/authentication_bloc.dart';
 import 'package:numb_master/injection_container.dart' as locator;
 
 void main() async {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => locator.locator<RegistrationBloc>()),
+        BlocProvider(create: (_) => locator.locator<AuthenticationBloc>()),
       ],
       child: MaterialApp.router(
         routeInformationParser: _appRouter.defaultRouteParser(),

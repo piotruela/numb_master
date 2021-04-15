@@ -6,14 +6,14 @@ import 'package:numb_master/features/authentication/domain/entities/authenticati
 import 'package:numb_master/features/authentication/domain/repositories/authentication_repository.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
-  final AuthenticationDataSource dataSource;
+  final AuthenticationDataSource authenticationDataSource;
 
-  AuthenticationRepositoryImpl({required this.dataSource});
+  AuthenticationRepositoryImpl({required this.authenticationDataSource});
 
   @override
   Future<Either<Failure, AuthenticationResult>> createAccount({required String email,required  String password}) async {
     try {
-      await dataSource.createAccount(email: email, password: password);
+      await authenticationDataSource.createAccount(email: email, password: password);
       return Right(AuthenticationResult.registered);
     } on FirebaseAuthException catch (e) {
       return Left(AuthenticationFailure(failureCode: e.code));
@@ -21,15 +21,28 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failure, AuthenticationResult>> logIn({required String email, required String password}) {
-    // TODO: implement logIn
-    throw UnimplementedError();
+  Future<Either<Failure, AuthenticationResult>> logIn({required String email, required String password}) async {
+    try{
+      await authenticationDataSource.logIn(email: email, password: password);
+      return Right(AuthenticationResult.logged);
+    } on FirebaseAuthException catch (e){
+      return Left(AuthenticationFailure(failureCode: e.code));
+    }
   }
 
   @override
-  Future<Either<Failure, AuthenticationResult>> logOut() {
-    // TODO: implement logOut
-    throw UnimplementedError();
+  Future<Either<Failure, AuthenticationResult>> logOut() async {
+    await authenticationDataSource.logOut();
+    return Right(AuthenticationResult.logged_out);
+  }
+
+  @override
+  Either<Failure, AuthenticationResult> getAuthenticationStatus() {
+    final result = authenticationDataSource.getLoggedUserData();
+    if(result != null){
+      return Right(AuthenticationResult.logged);
+    }
+    return Left(AuthenticationFailure());
   }
 
 }

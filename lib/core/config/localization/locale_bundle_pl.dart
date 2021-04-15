@@ -40,4 +40,19 @@ class LocaleBundlePl extends LocaleBundle {
 
   @override
   String get invalidFieldValue => 'Błędna wartość pola';
+
+  @override
+  String get loginPageSubtitle => throw UnimplementedError();
+
+  @override
+  String get loginPageTitle => throw UnimplementedError();
+
+  @override
+  String get loginWithFacebook => throw UnimplementedError();
+
+  @override
+  String get signUp => throw UnimplementedError();
+
+  @override
+  String get youDontHaveAnAccountQuestion => throw UnimplementedError();
 }

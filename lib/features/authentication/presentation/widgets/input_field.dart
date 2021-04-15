@@ -9,7 +9,7 @@ class InputField extends StatelessWidget {
     Key? key,
     required this.labelText,
     required this.controller,
-    required this.validator,
+    this.validator,
   }) : super(key: key);
 
   @override

@@ -8,7 +8,7 @@ abstract class Failure extends Equatable {
 class ServerFailure extends Failure {}
 
 class AuthenticationFailure extends Failure {
-  final String failureCode;
+  final String? failureCode;
 
-  AuthenticationFailure({required this.failureCode});
+  AuthenticationFailure({this.failureCode});
 }

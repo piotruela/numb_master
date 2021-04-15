@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
   final String buttonLabel;
+  final Color labelColor;
   final VoidCallback? onPressed;
 
   const SubmitButton({
     Key? key,
     required this.buttonLabel,
+    this.labelColor = Colors.black,
     this.onPressed,
   }) : super(key: key);
 
@@ -25,7 +27,7 @@ class SubmitButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         buttonLabel,
-        style: const TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: labelColor),
       ),
     );
   }

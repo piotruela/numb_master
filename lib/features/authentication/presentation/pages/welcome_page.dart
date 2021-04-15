@@ -89,7 +89,7 @@ class _NavigateToRegisterPageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => AutoRouter.of(context).push(RegisterPageRoute()),
+      onPressed: () => AutoRouter.of(context).push(RegistrationPageRoute()),
       child: Text(localeBundle.register),
     );
   }
@@ -103,7 +103,7 @@ class _NavigateToLoginPageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => {},
+      onPressed: () => AutoRouter.of(context).push(LoginPageRoute()),
       style: _buildButtonStyle(context),
       child: Text(
         localeBundle.login,
