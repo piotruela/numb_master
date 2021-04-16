@@ -37,12 +37,17 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Either<Failure, AuthenticationResult> getAuthenticationStatus() {
+  AuthenticationResult getAuthenticationStatus() {
     final result = authenticationDataSource.getLoggedUserData();
     if(result != null){
-      return Right(AuthenticationResult.logged);
+      return AuthenticationResult.logged;
     }
-    return Left(AuthenticationFailure());
+    return AuthenticationResult.logged_out;
+  }
+
+  @override
+  User? getLoggedUser() {
+    return authenticationDataSource.getLoggedUserData();
   }
 
 }

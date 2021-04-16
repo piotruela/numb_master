@@ -22,21 +22,14 @@ class WelcomePage extends StatelessWidget {
             width: 300,
             child: SvgPicture.asset(assetConfig.graduationSvg),
           ),
-          _TextSection(localeBundle: localeBundle),
-          _BottomSection(localeBundle: localeBundle)
+          _buildTextSection(context, localeBundle),
+          _buildBottomSection(context, localeBundle)
         ],
       ),
     );
   }
-}
 
-class _TextSection extends StatelessWidget {
-  final LocaleBundle localeBundle;
-
-  const _TextSection({required this.localeBundle});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildTextSection(BuildContext context, LocaleBundle localeBundle) {
     return RichText(
       text: TextSpan(
         style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w300),
@@ -50,16 +43,8 @@ class _TextSection extends StatelessWidget {
       ),
     );
   }
-}
 
-
-class _BottomSection extends StatelessWidget {
-  final LocaleBundle localeBundle;
-
-  const _BottomSection({required this.localeBundle});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildBottomSection(BuildContext context, LocaleBundle localeBundle) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Row(

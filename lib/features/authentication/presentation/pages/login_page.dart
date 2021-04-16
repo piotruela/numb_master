@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:numb_master/core/config/app_colors.dart';
 import 'package:numb_master/core/config/localization/locale_bundle.dart';
 import 'package:numb_master/core/config/localization/localization.dart';
 import 'package:numb_master/core/config/navigation/router.gr.dart';
-import 'package:numb_master/core/util/field_validators.dart';
+import 'package:numb_master/core/presentation/widgets/app_snack_bar.dart';
 import 'package:numb_master/features/authentication/presentation/bloc/authentication/authentication_bloc.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/authentication_page.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/input_field.dart';
@@ -19,17 +20,26 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LocaleBundle _localeBundle = Localization.of(context)!.bundle!;
-    return AuthenticationPage(
-      pageTitle: _localeBundle.loginPageTitle,
-      pageSubtitle: _localeBundle.loginPageSubtitle,
-      formKey: formKey,
-      inputFields: _buildInputFields(_localeBundle),
-      submitButtonLabel: _localeBundle.logIn,
-      submitButtonOnPressed: _buildOnSubmitPressed(context),
-      footerQuestion: _localeBundle.youDontHaveAnAccountQuestion,
-      footerActionText: _localeBundle.signUp,
-      footerNavigateToPage: RegistrationPageRoute(),
-      extraButton: _buildLoginWithFacebookButton(context, _localeBundle),
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) {
+        if (state.type == AuthenticationStateType.logged_in) {
+          AutoRouter.of(context).push(DashboardPageRoute());
+        } else if (state.type == AuthenticationStateType.failure) {
+          ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(label: _localeBundle.loginError));
+        }
+      },
+      child: AuthenticationPage(
+        pageTitle: _localeBundle.loginPageTitle,
+        pageSubtitle: _localeBundle.loginPageSubtitle,
+        formKey: formKey,
+        inputFields: _buildInputFields(_localeBundle),
+        submitButtonLabel: _localeBundle.logIn,
+        submitButtonOnPressed: _buildOnSubmitPressed(context),
+        footerQuestion: _localeBundle.youDontHaveAnAccountQuestion,
+        footerActionText: _localeBundle.signUp,
+        footerNavigateToPage: RegistrationPageRoute(),
+        extraButton: _buildLoginWithFacebookButton(context, _localeBundle),
+      ),
     );
   }
 
@@ -38,19 +48,18 @@ class LoginPage extends StatelessWidget {
       InputField(
         labelText: localeBundle.email,
         controller: emailController,
-        validator: Validators.emailValidator,
       ),
       InputField(
         labelText: localeBundle.password,
         controller: passwordController,
-        validator: Validators.passwordValidator,
+        obscureText: true,
       ),
     ];
   }
 
   Function() _buildOnSubmitPressed(BuildContext context) {
     return () => BlocProvider.of<AuthenticationBloc>(context).add(
-          LoginFormSubmitted(
+          LoginFormSubmittedEvent(
             email: emailController.text,
             password: passwordController.text,
             isFormValid: formKey.currentState!.validate(),

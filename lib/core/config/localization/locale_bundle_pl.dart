@@ -55,4 +55,18 @@ class LocaleBundlePl extends LocaleBundle {
 
   @override
   String get youDontHaveAnAccountQuestion => throw UnimplementedError();
+
+  @override
+  String get loginError => throw UnimplementedError();
+
+  @override
+  String get registrationError => throw UnimplementedError();
+
+  @override
+  String get dashboardSubtitle => throw UnimplementedError();
+
+  @override
+  String welcomeUser(String userEmail) {
+    throw UnimplementedError();
+  }
 }

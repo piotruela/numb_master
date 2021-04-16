@@ -13,6 +13,8 @@ import 'package:numb_master/features/authentication/presentation/pages/splash_pa
     as _i2;
 import 'package:numb_master/features/authentication/presentation/pages/welcome_page.dart'
     as _i3;
+import 'package:numb_master/features/courses/presentation/pages/dashboard_page.dart'
+    as _i6;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter();
@@ -30,6 +32,9 @@ class AppRouter extends _i1.RootStackRouter {
     },
     LoginPageRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i5.LoginPage());
+    },
+    DashboardPageRoute.name: (entry) {
+      return _i1.AdaptivePage(entry: entry, child: _i6.DashboardPage());
     }
   };
 
@@ -38,7 +43,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SplashPageRoute.name, path: '/'),
         _i1.RouteConfig(WelcomePageRoute.name, path: '/welcome-page'),
         _i1.RouteConfig(RegistrationPageRoute.name, path: '/registration-page'),
-        _i1.RouteConfig(LoginPageRoute.name, path: '/login-page')
+        _i1.RouteConfig(LoginPageRoute.name, path: '/login-page'),
+        _i1.RouteConfig(DashboardPageRoute.name, path: '/dashboard-page')
       ];
 }
 
@@ -64,4 +70,10 @@ class LoginPageRoute extends _i1.PageRouteInfo {
   const LoginPageRoute() : super(name, path: '/login-page');
 
   static const String name = 'LoginPageRoute';
+}
+
+class DashboardPageRoute extends _i1.PageRouteInfo {
+  const DashboardPageRoute() : super(name, path: '/dashboard-page');
+
+  static const String name = 'DashboardPageRoute';
 }

@@ -9,13 +9,18 @@ class CheckAuthenticationStatusEvent extends AuthenticationEvent {
   List<Object> get props => [];
 }
 
-class RegistrationFormSubmitted extends AuthenticationEvent {
+class LogOutEvent extends AuthenticationEvent {
+  @override
+  List<Object> get props => [];
+}
+
+class RegistrationFormSubmittedEvent extends AuthenticationEvent {
   final String email;
   final String password;
   final String repeatPassword;
   final bool isFormValid;
 
-  RegistrationFormSubmitted({
+  RegistrationFormSubmittedEvent({
     required this.email,
     required this.password,
     required this.repeatPassword,
@@ -26,12 +31,12 @@ class RegistrationFormSubmitted extends AuthenticationEvent {
   List<Object> get props => [email, password, repeatPassword];
 }
 
-class LoginFormSubmitted extends AuthenticationEvent {
+class LoginFormSubmittedEvent extends AuthenticationEvent {
   final String email;
   final String password;
   final bool isFormValid;
 
-  LoginFormSubmitted({
+  LoginFormSubmittedEvent({
     required this.email,
     required this.password,
     this.isFormValid = false,

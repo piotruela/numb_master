@@ -34,4 +34,12 @@ abstract class LocaleBundle {
   String get youDontHaveAnAccountQuestion;
 
   String get signUp;
+
+  String get loginError;
+
+  String get registrationError;
+
+  String welcomeUser(String userEmail);
+
+  String get dashboardSubtitle;
 }

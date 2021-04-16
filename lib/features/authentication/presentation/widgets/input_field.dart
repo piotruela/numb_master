@@ -4,12 +4,14 @@ class InputField extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final bool obscureText;
 
   const InputField({
     Key? key,
     required this.labelText,
     required this.controller,
     this.validator,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -17,6 +19,7 @@ class InputField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: TextFormField(
+        obscureText: obscureText,
         controller: controller,
         validator: validator,
         decoration: InputDecoration(

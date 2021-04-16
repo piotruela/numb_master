@@ -55,4 +55,16 @@ class LocaleBundleEn extends LocaleBundle {
 
   @override
   String get signUp => 'Sign up';
+
+  @override
+  String get loginError => 'Login error';
+
+  @override
+  String get registrationError => 'Registration error';
+
+  @override
+  String welcomeUser(String userEmail) => 'Welcome $userEmail!';
+
+  @override
+  String get dashboardSubtitle => 'What you want to learn today?';
 }

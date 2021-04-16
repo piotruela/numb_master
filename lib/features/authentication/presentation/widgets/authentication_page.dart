@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:numb_master/core/presentation/widgets/unfocused_widget.dart';
+import 'package:numb_master/features/authentication/presentation/bloc/authentication/authentication_bloc.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/footer_text.dart';
 import 'package:numb_master/features/authentication/presentation/widgets/page_header.dart';
 import 'package:numb_master/core/util/extensions/list_extensions.dart';
@@ -35,22 +37,33 @@ class AuthenticationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: UnfocusedWidget(
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              _buildHeader(context),
-              Expanded(flex: 3, child: SizedBox.shrink()),
-              ...inputFields.separatedWith(SizedBox(height: 20.0)),
-              Expanded(flex: 11, child: SizedBox.shrink()),
-              _buildSubmitButton(context),
-              extraButton ?? SizedBox.shrink(),
-              Expanded(flex: 1, child: SizedBox.shrink()),
-              _buildFooter(context),
-              Expanded(flex: 7, child: SizedBox.shrink()),
-            ],
-          ),
+      body: BlocBuilder<AuthenticationBloc, AuthenticationState>(builder: (context, state) {
+        switch (state.type) {
+          case AuthenticationStateType.inProgress:
+            return Center(child: CircularProgressIndicator());
+          default:
+            return _buildForm(context);
+        }
+      }),
+    );
+  }
+
+  Widget _buildForm(BuildContext context) {
+    return UnfocusedWidget(
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            _buildHeader(context),
+            Expanded(flex: 3, child: SizedBox.shrink()),
+            ...inputFields.separatedWith(SizedBox(height: 20.0)),
+            Expanded(flex: 11, child: SizedBox.shrink()),
+            _buildSubmitButton(context),
+            extraButton ?? SizedBox.shrink(),
+            Expanded(flex: 1, child: SizedBox.shrink()),
+            _buildFooter(context),
+            Expanded(flex: 7, child: SizedBox.shrink()),
+          ],
         ),
       ),
     );

@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
             AutoRouter.of(context).replace(WelcomePageRoute());
             break;
           case AuthenticationStateType.logged_in:
-            // TODO(piotruela): Navigate to Dashboard
+            AutoRouter.of(context).replace(DashboardPageRoute());
             break;
           default:
         }

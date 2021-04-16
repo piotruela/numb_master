@@ -7,6 +7,7 @@ class AppTheme {
       buttonColor: Color(0xFFFDDC77),
       errorColor: Color(0xFFAD1616),
       unselectedWidgetColor: Color(0xFFBDBDBD),
+      backgroundColor: Color(0xFFF2F4FF),
       fontFamily: 'Roboto',
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
@@ -19,6 +20,13 @@ class AppTheme {
               side: BorderSide(color: Colors.white),
             ),
           ),
+        ),
+      ),
+      tabBarTheme: TabBarTheme(
+        labelColor: Colors.black,
+        indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(width: 4.0, color: Color(0xFF747FE8)),
+            insets: EdgeInsets.symmetric(horizontal:50.0)
         ),
       ),
     );
